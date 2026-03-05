@@ -10,8 +10,6 @@ It combines **machine learning outputs, symbolic rules, and structured reasoning
 - **Malware infrastructure**
 - **Unknown / suspicious**
 
-The system is designed for **security research, SOC pipelines, and explainable ML systems** where classification decisions must be **traceable and interpretable**.
-
 ---
 
 # Core Idea
