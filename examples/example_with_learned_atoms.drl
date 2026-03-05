@@ -1,0 +1,66 @@
+DRL/1.2
+TASK: Explain why this domain may be malicious or benign.
+ENTITY: domain("example-login-security.vercel.app")
+
+ATTRIBUTES:
+  lex_name_len: 34
+  dns_MX_count: 0
+  tls_has_tls: True
+  rdap_domain_age: 45
+  ml_phish_prob: 0.93
+
+ATOMS:
+  - atom: RDAP_NEW_DOMAIN
+    value: true
+    from: derived:base_thresholds@1.2.0
+    note: rdap_domain_age < 180
+  - atom: DNS_NO_MX
+    value: true
+    from: derived:base_thresholds@1.2.0
+    note: dns_MX_count == 0
+  - atom: LEX_LONG_NAME
+    value: true
+    from: derived:base_thresholds@1.2.0
+    note: lex_name_len >= 30
+  - atom: ML_PHISH_PROB_GE_0_9
+    value: true
+    from: learned:ml_probs@1.0.0
+    note: ml_phish_prob=0.930 threshold=0.90
+
+RULES_FIRED:
+  - rule_id: G01
+    claim: Very new domain (short-lived infra common in abuse).
+    category: generic_risk
+    weight: 3.0
+    evidence_atoms: [RDAP_NEW_DOMAIN]
+    note: derived from RDAP age
+  - rule_id: L01
+    claim: Model indicates high phishing probability (learned evidence).
+    category: phishing
+    weight: 2.0
+    evidence_atoms: [ML_PHISH_PROB_GE_0_9]
+    note: learned atom
+
+SCORES:
+  benign: 0.0
+  phishing: 2.0
+  malware: 0.0
+  generic_risk: 3.0
+
+DECISION:
+  predicted_label: unknown
+  confidence: low
+  if_given_label:
+    given_label: none
+    match: n/a
+    comment: Not enough strong class-specific evidence; treat as risky.
+
+OUTPUT:
+  reasons:
+    - Very new domain (high generic risk).
+    - Learned model output suggests phishing likelihood.
+  recommended_actions:
+    - Block or isolate until HTTP/content telemetry confirms intent.
+    - Fetch passive DNS history and URL path telemetry for confirmation.
+  action_requests:
+    - Fetch: WHOIS/RDAP full record, passive DNS, and HTTP redirect chain if available.

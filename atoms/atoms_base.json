@@ -1,0 +1,22 @@
+{
+  "provider_id": "base_thresholds",
+  "provider_version": "1.2.0",
+  "notes": "Base atoms derived deterministically from raw attributes.",
+  "examples": [
+    {
+      "atom": "RDAP_NEW_DOMAIN",
+      "from": "derived",
+      "note": "rdap_domain_age < 180"
+    },
+    {
+      "atom": "DNS_NO_MX",
+      "from": "derived",
+      "note": "dns_MX_count == 0"
+    },
+    {
+      "atom": "LEX_SLD_HIGH_ENTROPY",
+      "from": "derived",
+      "note": "lex_sld_norm_entropy >= 0.45"
+    }
+  ]
+}

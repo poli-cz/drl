@@ -1,0 +1,23 @@
+{
+  "provider_id": "ml_probs",
+  "provider_version": "1.0.0",
+  "notes": "Example learned atoms derived from model probability outputs.",
+  "expected_attribute_inputs": [
+    "ml_phish_prob",
+    "ml_malware_prob"
+  ],
+  "atoms": [
+    {
+      "atom": "ML_PHISH_PROB_GE_0_9",
+      "value": true,
+      "from": "learned:ml_probs@1.0.0",
+      "note": "ml_phish_prob=0.93 >= 0.90"
+    },
+    {
+      "atom": "ML_MALWARE_PROB_GE_0_85",
+      "value": false,
+      "from": "learned:ml_probs@1.0.0",
+      "note": "ml_malware_prob=0.12 < 0.85"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "version": "1.2",
+  "updated": "2026-03-05",
+  "atoms": [
+    {
+      "name": "RDAP_NEW_DOMAIN",
+      "type": "bool",
+      "description": "Domain age < 180 days.",
+      "provider_id": "base_thresholds",
+      "provider_version": "1.2.0",
+      "requires": [
+        "rdap_domain_age"
+      ],
+      "params": {
+        "lt_days": 180
+      }
+    },
+    {
+      "name": "TLS_SUSPICIOUS",
+      "type": "bool",
+      "description": "TLS expired or self-signed.",
+      "provider_id": "base_thresholds",
+      "provider_version": "1.2.0",
+      "requires": [
+        "tls_has_tls",
+        "tls_is_self_signed",
+        "tls_expired_chain"
+      ],
+      "params": {}
+    },
+    {
+      "name": "ML_PHISH_PROB_GE_0_9",
+      "type": "bool",
+      "description": "Learned phishing probability >= 0.90 (from ML model output).",
+      "provider_id": "ml_probs",
+      "provider_version": "1.0.0",
+      "requires": [
+        "ml_phish_prob"
+      ],
+      "params": {
+        "threshold": 0.9
+      }
+    },
+    {
+      "name": "ML_MALWARE_PROB_GE_0_85",
+      "type": "bool",
+      "description": "Learned malware probability >= 0.85 (from ML model output).",
+      "provider_id": "ml_probs",
+      "provider_version": "1.0.0",
+      "requires": [
+        "ml_malware_prob"
+      ],
+      "params": {
+        "threshold": 0.85
+      }
+    },
+    {
+      "name": "CAL_RISK_GE_0_7",
+      "type": "bool",
+      "description": "Calibrated risk score >= 0.70 (post-calibration).",
+      "provider_id": "risk_calibration",
+      "provider_version": "0.1.0",
+      "requires": [
+        "cal_risk_score"
+      ],
+      "params": {
+        "threshold": 0.7
+      }
+    }
+  ]
+}
