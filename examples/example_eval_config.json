@@ -1,0 +1,5 @@
+{
+  "dataset": "domains.parquet",
+  "model": "gpt-4o-mini",
+  "output": "results.json"
+}

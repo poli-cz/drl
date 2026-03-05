@@ -1,0 +1,54 @@
+{
+  "domain": "x21-31w.pages.dev",
+  "true_label": "phishing_since_2405:phishing",
+  "predicted_label": "phishing",
+  "reasoning": {
+    "domain_attributes_analysis": {
+      "domain_name": {
+        "value": "x21-31w.pages.dev",
+        "notes": "Non-descriptive and somewhat random name, hosted on Cloudflare's legitimate pages.dev platform.",
+        "indicator": "positive"
+      },
+      "rdap_domain_age_days": {
+        "value": 1370.89,
+        "notes": "~3.75 years old. Older domains are generally a positive indicator; phishing domains are often newly registered.",
+        "indicator": "positive"
+      },
+      "dns_mx_count": {
+        "value": 0,
+        "notes": "No MX records; domain not configured for email.",
+        "indicator": "neutral"
+      },
+      "dns_ns_count": {
+        "value": 2,
+        "notes": "Typical name server count, no malicious indication.",
+        "indicator": "neutral"
+      },
+      "tls_enabled": {
+        "value": true,
+        "notes": "Supports TLS, but TLS alone does not confirm benign behavior.",
+        "indicator": "positive"
+      },
+      "lexical_name_length": {
+        "value": 17,
+        "notes": "Moderate length; random appearance but insufficient alone for classification.",
+        "indicator": "neutral"
+      },
+      "ml_phish_probability": {
+        "value": null,
+        "notes": "No ML-based phishing probability available.",
+        "indicator": "unknown"
+      },
+      "ml_malware_probability": {
+        "value": null,
+        "notes": "No ML-based malware probability available.",
+        "indicator": "unknown"
+      }
+    },
+    "conclusion": {
+      "predicted_label": "benign",
+      "confidence_pct": 70,
+      "summary": "Domain is hosted on a legitimate platform, has a relatively old age, and supports TLS — strong benign indicators. Lack of ML probabilities and limited evidence of malicious behavior reduce confidence."
+    }
+  }
+}
