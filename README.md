@@ -1,5 +1,5 @@
 
-# DRL-Domain
+# Domain Reasoning Language (DRL)
 ## Neuro-Symbolic Reasoning Language for Domain Reputation Analysis
 
 DRL-Domain (Domain Reasoning Language) is a **neuro‑symbolic reasoning framework** designed for explainable analysis of internet domains.  
